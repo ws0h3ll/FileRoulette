@@ -51,10 +51,7 @@ def extract_filename(html):
 
 def generate_ufile_link():
     """Generate a random ufile.io link."""
-    characters = "abcdefghijklmnopqrstuvwxyz0123456789"
-    key = "".join([random.choice(characters) for x in range(5)])
-    url = "https://uploadfiles.io/{}".format(key)
-    return url
+    return urlgen("https://uploadfiles.io/{}", "a1", 5)
 
 def get_head(url):
     """Request the headers for the specified URL."""
