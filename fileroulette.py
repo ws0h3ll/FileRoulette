@@ -8,6 +8,8 @@ import requests
 import threading
 import webbrowser
 
+from urlgen import urlgen
+
 # A list of user agents. We'll pick one at random every time.
 agents = [
     'Mozilla/5.0 (Windows NT 6.1; rv:52.0) Gecko/20100101 Firefox/52.0',
