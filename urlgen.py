@@ -56,6 +56,6 @@ def urlgen(a,s,t): #a is link to append to, s is the size of the appended string
         print('Missing parameters "{}" please try again')
         sys.exit()
       print(a.format(''.join(random.choice(chars) for _ in range(s))))
-    urlgen('https://test/{}/test',6,'aZ1')  #valid test
+urlgen('https://test/{}/test',6,'aZ1')  #valid test
 
 
