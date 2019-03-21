@@ -16,12 +16,10 @@ uploadfiles.io
     urlgen("https://uploadfiles.io/{}", "a1", 5)
 
 """
-
-import random
 import string
-
-
-def urlgen(template: str, charset: str, length: int) -> str:
+import sys
+import random
+def urlgen(a,s,t): #a is link to append to, s is the size of the appended string, t is the type of string
     """Generate a random URL with the specified rules.
 
     Parameters
@@ -45,33 +43,19 @@ def urlgen(template: str, charset: str, length: int) -> str:
     -------
     new_url
         A randomly-generated URL that matches the definition.
-    """
-    # Generate the random pool based on the specified charset. First, we need
-    # to initialize the character pool.
-    pool = set()
-    # Next, parse each character in the specified charset.
-    for character in list(charset):
-        # Check to see if the character is uppercase, lowercase, or digit.
-        for chars in [
-            string.ascii_lowercase,
-            string.ascii_uppercase,
-            string.digits,
-        ]:
-            # Depending on the character type, append that set of characters
-            # to the pool.
-            pool = pool.union(set(chars) if character in chars else set())
-    # Check to ensure that we've generated a valid character pool.
-    if not pool:
-        raise ValueError("Invalid charset specification.")
-    # Convert the pool set into a string.
-    pool = "".join(pool)
-    # Now we need to generate the random key from the pool set.
-    key = "".join([random.choice(pool) for _ in range(length)])
-    # Finally, insert the new key into the template URL.
-    new_url = template.format(key)
-    if new_url == template:
-        # If the new URL is the same as the template, they failed to specify
-        # which part of the URL to replace with the random string.
-        raise ValueError("Template URL missing {} specification.")
-    # Return the new URL.
-    return new_url
+    """  
+    chars = ''
+      for i in t:
+        if i in string.ascii_lowercase:
+          chars += string.ascii_lowercase
+        if i in string.ascii_uppercase:
+          chars += string.ascii_uppercase
+        if i in string.digits:
+          chars += string.digits
+      if '{}' not in a:
+        print('Missing parameters "{}" please try again')
+        sys.exit()
+      print(a.format(''.join(random.choice(chars) for _ in range(s))))
+    urlgen('https://test/{}/test',6,'aZ1')  #valid test
+
+
